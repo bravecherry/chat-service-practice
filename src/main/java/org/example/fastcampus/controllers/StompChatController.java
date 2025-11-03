@@ -25,6 +25,8 @@ public class StompChatController {
     private final ChatService chatService;
     private final SimpMessagingTemplate messagingTemplate;
 
+    //@MessageMapping 추가 설명
+    // WebSocket 세션은 “HTTP 요청”이 아니기 때문에 Spring의 OSIV가 적용되지 않아요.
     @MessageMapping("/chats/{chatroomId}") // 클라이언트 -> 서버 : /pub/chats/...
     @SendTo("/sub/chats/{chatroomId}")
     public ChatMessage handleMessage(
